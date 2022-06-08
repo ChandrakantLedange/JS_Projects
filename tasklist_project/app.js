@@ -16,6 +16,12 @@ function loadEventListeners(){
     
     //Remove task event
     taskList.addEventListener('click',removeTask);
+
+    //Clear tasks event 
+    clearBtn.addEventListener('click',clearTasks);
+
+    //Filter task event 
+    filter.addEventListener('keyup',filterTasks)
 }
 
 //Add Task
@@ -59,4 +65,37 @@ function removeTask(e){
         }
         console.log(e.target);
     }
+}
+
+//Clear Tasks
+function clearTasks(){
+    // below is the one way to clear task
+    // taskList.innerHTML = '';
+
+    //another way which is faster(not much) then above
+    while(taskList.firstChild){
+        taskList.removeChild(taskList.firstChild);
+    }
+}
+
+//Filter Tasks
+function filterTasks(e){
+    const text = e.target.value.toLowerCase();
+
+    document.querySelectorAll('.collection-item').forEach(
+        function(task){
+            // console.log("foreach task:",task);
+            // const item = task.firstChild.textContent;
+            // console.log("item within foreach",item);
+            // console.log(item.toLowerCase().indexOf(text));
+            if(item.toLowerCase().indexOf(text) != -1){
+                task.style.display = "block";
+            }else{
+                task.style.display = "none";
+
+            }
+        }
+    )
+
+    // console.log(text);
 }

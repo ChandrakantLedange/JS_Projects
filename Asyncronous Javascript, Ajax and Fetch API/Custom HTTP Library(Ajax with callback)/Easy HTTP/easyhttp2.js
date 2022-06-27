@@ -55,7 +55,7 @@ class EasyHTTP{
                 },
             })
             .then(res=> res.json())
-            .then(data =>resolve('Resorece Deleted'))
+            .then(data =>resolve('Resource Deleted'))
             .catch(err => reject(err));
         })
     }
